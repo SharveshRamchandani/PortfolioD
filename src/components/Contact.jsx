@@ -78,7 +78,7 @@ export default function Contact() {
 
           {/* LinkedIn Card */}
           <motion.a
-            href="https://linkedin.com/in/dheeksha-v-6937042ba"
+            href="https://www.linkedin.com/in/dheeksha-v-6937042ba"
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0, y: 15 }}
