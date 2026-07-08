@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-brand-lightBg text-brand-lightTextMuted dark:bg-brand-bg dark:text-neutral-300 font-body selection:bg-brand-accent/20 selection:text-brand-accentLight overflow-x-hidden antialiased transition-colors duration-500;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight text-neutral-900 dark:text-white transition-colors duration-500;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-brand-lightBg dark:bg-brand-bg transition-colors duration-500;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-lightBorder dark:bg-brand-border rounded-[3px] transition-colors duration-500;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a2a2a;
+}
+
+/* Custom Utility Classes */
+.noise-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  opacity: 0.015;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.editorial-grid {
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.012) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.012) 1px, transparent 1px);
+}
+
+.dark .editorial-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.007) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.007) 1px, transparent 1px);
+}
+
+/* Animated custom links underline */
+.hover-underline-anim {
+  position: relative;
+}
+.hover-underline-anim::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom right;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.hover-underline-anim:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Border sweep glow animation */
+.border-sweep {
+  position: relative;
+  overflow: hidden;
+}
+.border-sweep::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d97706, transparent);
+  transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.border-sweep:hover::before {
+  left: 100%;
+}
